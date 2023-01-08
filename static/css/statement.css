@@ -1,0 +1,51 @@
+body {
+    font-family: 'Roboto';
+    font-size: 12pt;
+}
+
+p {
+    margin: 1px;
+}
+
+table {
+    width: 7.5in;
+    border-collapse: collapse;
+    border: 1px solid lightgray;
+}
+
+th, td {
+    padding: 5px;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    border-collapse: collapse;
+}
+
+td, th {
+    text-align: right;
+}
+
+td:first-child, th:first-child {
+    text-align: left;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.big-gap {
+    gap: 200px;
+}
+
+.fixed-width {
+    width: 130px;
+}
+
+@media print {
+    @page {
+        margin: 0;
+    }
+
+    body {
+        margin: 1.3cm;
+    }
+}

@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+{% load static %}
+<head>
+  <title>Pay Statement</title>
+  <link rel='shortcut icon' type='image/png' href="{% static 'favicon.ico' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900&display=swap" rel="stylesheet">
+  <link href="{% static 'css/statement.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <h2>{{ payrollAccountName }}</h2>
+    <div>
+        <h3>Pay Statement</h3>
+        <div class="flex-container">
+            <p class="fixed-width">Period Start Date:</p>
+            <p>{{ payPeriodStart }}</p>
+        </div>
+        <div class="flex-container">
+            <p class="fixed-width">Period End Date:</p>
+            <p>{{ payPeriodEnd }}</p>
+        </div>
+        <div class="flex-container">
+            <p class="fixed-width">Pay Date:</p>
+            <p>{{ payDate }}</p>
+        </div>
+    </div>
+    <h3>Pay Details</h3>
+    <div class="flex-container big-gap">
+        <div>
+            <p>{{ firstName }} {{ lastName }}</p>
+            <p>{{ streetAddress }}</p>
+            <p>{{ city }} {{ province }} {{ postalCode }}</p>
+            <p>{{ country }}</p>
+        </div>
+        <div>
+            <p>Employee Number: {{ employeeNumber }}</p>
+            <p>Job: {{ jobTitle }}</p>
+            <p>Pay Rate: ${{ hourlyWage }}</p>
+            <p>Pay Frequency: {{ payFrequency }}</p>
+        </div>
+    </div>
+    <div>
+        <h3>Earnings</h3>
+        <table>
+            <tr>
+                <th>Pay Type</th>
+                <th>Hours</th>
+                <th>Pay Rate</th>
+                <th>Current</th>
+                <th>YTD</th>
+            </tr>
+            <tr>
+                <td>Regular Pay</td>
+                <td>{{ payHours }}</td>
+                <td>${{ hourlyWage }}</td>
+                <td>${{ regularPay }}</td>
+                <td>${{ regularPayYtd }}</td>
+            </tr>
+            <tr>
+                <td>Vacation Pay</td>
+                <td></td>
+                <td></td>
+                <td>${{ vacationPay }}</td>
+                <td>${{ vacationPayYtd }}</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h3>Deductions</h3>
+        <table>
+            <tr>
+                <th>Deduction</th>
+                <th>Employee Current</th>
+                <th>Employee YTD</th>
+                <th>Employer Current</th>
+                <th>Employer YTD</th>
+            </tr>
+            <tr>
+                <td>Federal Income Tax</td>
+                <td>${{ federalIncomeTax }}</td>
+                <td>${{ federalIncomeTaxYtd }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Provincial Income Tax</td>
+                <td>${{ provincialIncomeTax }}</td>
+                <td>${{ provincialIncomeTaxYtd }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>EI Premium EE</td>
+                <td>${{ ei }}</td>
+                <td>${{ eiYtd }}</td>
+                <td>${{ eiEmployer }}</td>
+                <td>${{ eiEmployerYtd }}</td>
+            </tr>
+            <tr>
+                <td>CPP Gov Pens EE</td>
+                <td>${{ cpp }}</td>
+                <td>${{ cppYtd }}</td>
+                <td>${{ cppEmployer }}</td>
+                <td>${{ cppEmployerYtd }}</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h3>Pay Summary</h3>
+        <table>
+            <tr>
+                <th></th>
+                <th>Gross</th>
+                <th>Deductions</th>
+                <th>Net Pay</th>
+            </tr>
+            <tr>
+                <td>Current</td>
+                <td>${{ grossPay }}</td>
+                <td>${{ deductions }}</td>
+                <td>${{ netPay }}</td>
+            </tr>
+            <tr>
+                <td>YTD</td>
+                <td>${{ grossPayYtd }}</td>
+                <td>${{ deductionsYtd }}</td>
+                <td>${{ netPayYtd }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+body {
+    font-family: 'Roboto';
+}
+
+div {
+    margin: 5px;
+}
+
+label {
+    display: inline-block;
+    min-width: 200px;
+}

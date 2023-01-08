@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+{% load static %}
+<head>
+  <title>Payroll</title>
+  <link rel='shortcut icon' type='image/png' href="{% static 'favicon.ico' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900&display=swap" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="{% static 'js/general.js' %}"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+</head>
+<body>
+  <h1>Payroll</h1>
+  <a href="https://www.canada.ca/en/revenue-agency/services/e-services/e-services-businesses/payroll-deductions-online-calculator.html">CRA Payroll Deductions Online Calculator</a>
+  <p>Select an Employee</p>
+  <select id="employee-select"></select>
+  <div>
+    <label>Job Title:</label>
+    <input id="job-title">
+  </div>
+  <div>
+    <label>Hourly Wage:</label>
+    <input type="number" id="hourly-wage">
+  </div>
+  <div>
+    <label>Pay Statements:</label>
+    <select id="pay-statements"></select>
+    <button onclick="openPayStatement()">Generate</button>
+    <button onclick="fillFromStatement()">Show Below</button>
+  </div>
+  <h2>New Pay Statement</h2>
+  <div>
+    <label>Pay Period Start:</label>
+    <input type="date" id="pay-period-start">
+  </div>
+  <div>
+    <label>Pay Period End:</label>
+    <input type="date" id="pay-period-end">
+  </div>
+  <div>
+    <label>Pay Date:</label>
+    <input type="date" id="pay-date">
+  </div>
+  <div>
+    <label>Pay Frequency:</label>
+    <input value="Bi-Weekly" id="pay-frequency">
+  </div>
+  <div>
+    <label>Pay Hours:</label>
+    <input type="number" id="pay-hours" onblur="calculatePay()">
+  </div>
+  <div>
+    <label>Regular Pay:</label>
+    <input type="number" id="regular-pay" disabled>
+  </div>
+  <div>
+    <label>Vacation Pay:</label>
+    <input type="number" id="vacation-pay" disabled>
+  </div>
+  <div>
+    <label>Gross Pay:</label>
+    <input type="number" id="gross-pay" disabled>
+  </div>
+  <div>
+    <label>Federal Income Tax:</label>
+    <input type="number" id="federal-income-tax" value="0">
+  </div>
+  <div>
+    <label>Provincial Income Tax:</label>
+    <input type="number" id="provincial-income-tax" value="0">
+  </div>
+  <div>
+    <label>EI:</label>
+    <input type="number" id="ei" onblur="matchEi()">
+  </div>
+  <div>
+    <label>CPP:</label>
+    <input type="number" id="cpp" onblur="matchCpp()">
+  </div>
+  <div>
+    <label>EI Employer Contribution:</label>
+    <input type="number" id="ei-employer">
+  </div>
+  <div>
+    <label>CPP Employer Contribution:</label>
+    <input type="number" id="cpp-employer">
+  </div>
+  <button onclick="submitPayStatement()">Submit</button>
+</body>
+</html>
